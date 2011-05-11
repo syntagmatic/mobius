@@ -1,0 +1,136 @@
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.js"></script>
+<script type="text/javascript" src="underscore.js"></script>
+<script type="text/javascript" src="backbone.js"></script>
+<script type="text/javascript" src="types.js"></script>
+
+<style type="text/css">
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+#wrap {
+  width: 100%;
+  height: 100%;
+}
+.panel {
+  width: 50%;
+  height: 50%;
+  float: left;
+  background: green;
+  position: relative;
+}
+#flipper {
+  position: absolute;
+  bottom: 13px;
+  right: 13px;
+}
+.button {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #555;
+  color: #fff;
+}
+.panel .buttons {
+    position: absolute;
+    bottom: 13px;
+    left: 13px;
+}
+</style>
+
+<script type="text/javascript">
+$(function() {
+
+        /*
+  var gameplay = new Play();
+    $('#switch-1').toggle( function() {
+        view1 = new PlayView({model: gameplay});
+        $("#view-1").append(view1.render('#view-1').el);
+    }, function() {
+        gameplay.clear();
+    });
+  */
+  $('#new-panel').click( function() {
+    var panel = new Panel();
+    var panelview = new PanelView({model: panel});
+    $("#wrap").append(panelview.render().el);
+  });
+
+});
+</script>
+</head>
+<body>
+<div id="wrap">
+</div>
+<div id="flipper">
+  <a href="#" id="new-panel" class="button">New Panel</a>
+</div>
+
+<!-- Templates-->
+
+<!-- Panel -->
+<script type="text/template" id="panel-template">
+    <div class="buttons">
+        <a href="#" class="play button">Play</a>
+    </div>
+</script>
+<!-- End Panel -->
+
+<!-- Shell -->
+<script type="text/template" id="shell-template">
+  <div id="console">
+    <div id="output">
+    </div>
+    <div id="input-wrap">
+      <textarea id="input" wrap="off" onkeydown="inputKeydown(event)" rows="1"></textarea>
+    </div>
+  </div>
+</script>
+<!-- End Shell -->
+
+<!-- Forms -->
+<script type="text/template" id="form-template">
+  <div class="form">
+
+  </div>
+</script>
+<script type="text/template" id="input-element">
+  <%= key %>:<br/> <input type="text" name="<%= key %>" value="<%= value %>" /><br/>
+</script>
+<!-- End Forms -->
+
+<!-- Code -->
+<script type="text/template" id="code-template">
+  <textarea class="code"></textarea>
+</script>
+<!-- End Code -->
+
+<!-- Chart -->
+<script type="text/template" id="chart-template">
+  <div class="chart"></div>
+</script>
+<!-- End Chart -->
+
+<!-- Grid -->
+<script type="text/template" id="grid-template">
+  <div class="grid"></div>
+</script>
+<!-- End Grid -->
+
+<!-- HTML -->
+<script type="text/template" id="html-template">
+  <div class="html"></div>
+</script>
+<!-- End HTML -->
+
+<!-- End Templates-->
+
+</body>
+</html>
